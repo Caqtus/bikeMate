@@ -3,6 +3,8 @@ package com.caqtus.bikemate;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.net.Uri;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -14,8 +16,9 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
 
-public class MainActivity extends AppCompatActivity implements
-        GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, com.google.android.gms.location.LocationListener {
+public class MainActivity extends FragmentActivity implements
+        GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener,
+        com.google.android.gms.location.LocationListener, NewCard.OnFragmentInteractionListener {
 
 
 
@@ -77,7 +80,8 @@ public class MainActivity extends AppCompatActivity implements
 
     public void startLocationUpdates(){
         createLocationRequest();
-        LocationServices.FusedLocationApi.requestLocationUpdates(googleApiClient, locationRequest, this);
+        LocationServices.FusedLocationApi.requestLocationUpdates(googleApiClient,
+                locationRequest, this);
     }
 
     public void createLocationRequest(){
@@ -126,6 +130,11 @@ public class MainActivity extends AppCompatActivity implements
         locLng = String.valueOf(lastLocation.getLongitude());
         System.out.println("location is " + locLat + " " + locLng);
         Toast.makeText(MainActivity.this, "location is " + locLat + " " + locLng, Toast.LENGTH_SHORT).show();
+
+    }
+
+    @Override
+    public void onFragmentInteraction(Uri uri) {
 
     }
 }
