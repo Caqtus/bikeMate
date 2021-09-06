@@ -16,7 +16,7 @@ public class MySQLConnect {
     public void dbconnect() {
         String dbUrl = "jdbc:mysql://db.example.com:port/databasename";
         String username = "username";
-        String password = "paroli22";
+        String password = "********";
 
         System.out.println("Connecting Database...");
 
